@@ -33,3 +33,19 @@ while True:
             name_lastname = input("name, lastname: ")
             t = json.load(file)
             print(t.get(name_lastname))
+    elif command == "dolg":
+        with open("bank.json", "r") as file:
+            name_lastname=input("name, lastname: ")
+            t=json.load(file)
+            sum_=int(input("sum: "))
+            sum_+=(sum_*0.05)
+            if t.get(name_lastname)==None:
+                t[name_lastname] = -sum_
+            else:
+                t[name_lastname] -= sum_
+
+            with open("bank.json","w")as file2:
+                json.dump(t,file2)
+
+
+
